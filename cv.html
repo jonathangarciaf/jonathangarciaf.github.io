@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV — Jonathan García Fuentes</title>
+<meta name="description" content="Curriculum vitae of Jonathan García Fuentes.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="index.html">Jonathan García Fuentes</a>
+  <div class="navbar-nav">
+    <a href="research.html">Research</a>
+    <a href="cv.html" class="active">CV</a>
+  </div>
+</nav>
+
+<main class="container">
+
+  <h1 class="page-title">Curriculum Vitæ</h1>
+
+  <!-- Update this date whenever you replace files/cv.pdf -->
+  <div class="cv-meta">
+    <div class="cv-label">Last updated</div>
+    <div class="cv-date">May 2026</div>
+  </div>
+
+  <p>
+    <a class="cv-download" href="files/cv.pdf" target="_blank" rel="noopener">
+      <i class="fa-solid fa-file-arrow-down"></i>&ensp;Download current CV
+    </a>
+  </p>
+
+  <!-- The CV embeds files/cv.pdf. Until that file is added, the fallback message shows. -->
+  <div class="embed-container">
+    <object data="files/cv.pdf" type="application/pdf">
+      <div class="cv-fallback">
+        CV PDF not added yet — drop your file in <code>files/cv.pdf</code> and it will appear here.
+      </div>
+    </object>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>&copy; <span id="year"></span> Jonathan García Fuentes</span>
+  <span>
+    <a href="mailto:jonathan.garcia@hu-berlin.de">Contact</a> &nbsp;|&nbsp;
+    <a href="https://github.com/jonathangarciaf/jonathangarciaf.github.io" target="_blank" rel="noopener">Source on GitHub</a>
+  </span>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

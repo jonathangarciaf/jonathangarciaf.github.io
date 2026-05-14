@@ -1,0 +1,180 @@
+/* =========================================================
+   Jonathan García Fuentes — personal academic website
+   Style modelled on rrmaximiliano.com (Harvard crimson,
+   Alegreya Sans). Plain CSS, no build step.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --crimson: #A51C30;
+  --crimson-dark: #8a1728;
+  --text: #212529;
+  --muted: #6c757d;
+  --bg: #ffffff;
+  --border: #dee2e6;
+  --maxw: 900px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Alegreya Sans", system-ui, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+
+a { color: var(--crimson); text-decoration: none; }
+a:hover, a:focus { color: var(--crimson-dark); text-decoration: underline; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.5rem 1.5rem;
+  padding: 0.85rem 1.5rem;
+  font-weight: 700; font-size: 1.2rem;
+}
+.navbar-brand { color: var(--text); }
+.navbar-brand:hover { color: var(--crimson); text-decoration: none; }
+.navbar-nav { display: flex; gap: 1.6rem; }
+.navbar-nav a { color: var(--text); }
+.navbar-nav a:hover { color: var(--crimson); text-decoration: none; }
+.navbar-nav a.active { color: var(--crimson); }
+
+/* ---------- Layout ---------- */
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.6rem 1.5rem 1rem;
+}
+.page-title { font-size: 2rem; margin: 0 0 1.5rem; }
+
+/* ---------- Home hero ---------- */
+.hero {
+  display: flex; gap: 2.2rem;
+  align-items: flex-start; flex-wrap: wrap;
+}
+.hero-photo {
+  width: 210px; height: 210px; flex-shrink: 0;
+  border-radius: 50%; object-fit: cover;
+  border: 3px solid var(--border);
+}
+.hero-photo-ph {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--crimson); color: #fff;
+  font-size: 4.5rem; font-weight: 700; border: none;
+}
+.hero-text { flex: 1; min-width: 280px; }
+.hero-text h1 { font-size: 2.4rem; margin: 0 0 0.25rem; line-height: 1.15; }
+.subtitle {
+  font-size: 1.25rem; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--muted); margin: 0 0 0.6rem;
+}
+
+/* ---------- Social links ---------- */
+.about-links {
+  display: flex; gap: 1.1rem; flex-wrap: wrap;
+  font-size: 1.5rem; margin-top: 0.9rem;
+}
+.about-links a { color: var(--crimson); line-height: 1; }
+.about-links a:hover { color: var(--crimson-dark); }
+
+/* ---------- Content sections ---------- */
+.section-divider {
+  border: 0; height: 2px; background: var(--crimson);
+  margin: 2.4rem 0 1.6rem;
+}
+h2 { font-size: 1.7rem; margin: 0 0 0.2rem; }
+h3 { font-size: 1.3rem; color: var(--muted); margin: 1.8rem 0 0.6rem; }
+p { margin: 0 0 1rem; }
+
+.facts { list-style: none; padding: 0; margin: 0; }
+.facts li { margin-bottom: 0.5rem; }
+.facts .label {
+  display: inline-block; min-width: 0;
+  font-weight: 700;
+}
+
+/* ---------- Publications / research ---------- */
+.publication { margin-bottom: 1.9rem; line-height: 1.55; }
+.publication .title { font-weight: 700; }
+.publication .meta { color: var(--text); }
+.pub-status {
+  display: inline-block;
+  color: var(--muted); font-size: 1rem;
+  text-transform: uppercase; letter-spacing: 0.4px;
+  margin-top: 0.15rem;
+}
+.publication ul { margin: 0.5rem 0 0; padding-left: 1.4rem; }
+.publication ul li { margin-bottom: 0.3rem; }
+.publication details { margin-top: 0.45rem; }
+.publication summary {
+  cursor: pointer; color: var(--crimson); font-weight: 500;
+  width: fit-content;
+}
+.publication summary:hover { color: var(--crimson-dark); }
+.publication details[open] summary { margin-bottom: 0.45rem; }
+
+/* ---------- CV page ---------- */
+.cv-meta { margin-bottom: 1.4rem; }
+.cv-label {
+  text-transform: uppercase; color: var(--muted);
+  font-size: 1rem; letter-spacing: 0.5px;
+}
+.cv-date { color: #000; font-size: 1rem; }
+.cv-download {
+  display: inline-block;
+  background: var(--crimson); color: #fff;
+  padding: 0.7rem 1.4rem; border-radius: 0.35rem;
+  font-weight: 700; font-size: 1.15rem;
+}
+.cv-download:hover, .cv-download:focus {
+  background: var(--crimson-dark); color: #fff; text-decoration: none;
+}
+.embed-container {
+  position: relative; padding-bottom: 129%; height: 0;
+  overflow: hidden; max-width: 100%; margin-top: 1.6rem;
+}
+.embed-container object,
+.embed-container iframe {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: 1px solid var(--border);
+}
+.cv-fallback {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 2rem;
+  border: 1px solid var(--border); color: var(--muted);
+  background: #f8f9fa;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  border-top: 1px solid var(--border);
+  margin: 3rem auto 0; max-width: var(--maxw);
+  padding: 1.4rem 1.5rem 2rem;
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.4rem 1rem;
+  font-size: 1rem; color: var(--muted);
+}
+.footer a { color: var(--muted); }
+.footer a:hover { color: var(--crimson); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 620px) {
+  body { font-size: 1.12rem; }
+  .navbar { padding: 0.7rem 1.1rem; font-size: 1.1rem; }
+  .navbar-nav { gap: 1.1rem; }
+  .container { padding: 2rem 1.2rem 1rem; }
+  .hero { gap: 1.4rem; }
+  .hero-photo { width: 150px; height: 150px; }
+  .hero-photo-ph { font-size: 3.2rem; }
+  .hero-text h1 { font-size: 2rem; }
+}
