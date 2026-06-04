@@ -14,7 +14,7 @@
 \linespread{0.97}
 
 % ---- Page layout ----
-\usepackage[left=0.6in,right=0.6in,top=0.5in,bottom=0.45in]{geometry}
+\usepackage[left=0.85in,right=0.6in,top=0.5in,bottom=0.45in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{xcolor}
@@ -24,15 +24,16 @@
 % ---- Accent (crimson) and grey tones ----
 \definecolor{cvlink}{HTML}{A51C30}   % links, section rules
 \definecolor{cvgrey}{HTML}{5F6B7A}   % dates, footer
-\hypersetup{colorlinks=true,urlcolor=cvlink,linkcolor=cvlink}
-\newcommand{\link}[2]{\href{#1}{\textcolor{cvlink}{#2}}}
+\definecolor{cvloc}{HTML}{4D4D4D}    % link labels (grey)
+\hypersetup{colorlinks=true,urlcolor=cvloc,linkcolor=cvloc}
+\newcommand{\link}[2]{\href{#1}{\textcolor{cvloc}{\textbf{#2}}}}
 % Placeholder for links whose target URL is not yet known — looks identical,
 % just not clickable. Replace TODO with the real URL.
-\newcommand{\todolink}[1]{\textcolor{cvlink}{#1}}
+\newcommand{\todolink}[1]{\textcolor{cvloc}{\textbf{#1}}}
 
 % ---- Section headings: bold UPPERCASE + full-width rule ----
 \titleformat{\section}{\large\bfseries}{}{0pt}{\MakeUppercase}[{\color{cvlink}\titlerule[1.1pt]}]
-\titlespacing*{\section}{0pt}{5pt}{6pt}
+\titlespacing*{\section}{0pt}{7pt}{9pt}
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
@@ -40,22 +41,27 @@
 
 % ---- Helper macros ----
 \newcommand{\dt}[1]{\textcolor{cvgrey}{#1}}                    % date colour (grey)
-\newcommand{\orgline}[2]{\textbf{#1}\hfill\textbf{\dt{#2}}\par} % organisation + grey date
+\newcommand{\orgnamefmt}{\fontsize{11}{13}\selectfont\bfseries} % institution-name size
+\newcommand{\orgline}[2]{{\orgnamefmt #1}\hfill\textbf{\dt{#2}}\par} % organisation (slightly larger) + grey date
 \newcommand{\eduline}[2]{\textbf{#1}\hfill\dt{#2}\par}         % institution + grey date
 \newcommand{\indentline}[1]{{\leftskip=1.4em\noindent\ignorespaces#1\par}} % indented role line (wrapped lines stay indented)
 \newcommand{\indentdate}[2]{{\leftskip=1.4em\noindent\ignorespaces#1\hfill\dt{#2}\par}}
 \newcommand{\posline}[2]{#1\hfill\dt{#2}\par}                  % WFP sub-position line
-\newcommand{\gap}{\vspace{1.3pt}}
+\newcommand{\gap}{\vspace{6.5pt}}
 \newcommand{\sqbull}{\raisebox{0.25ex}{\rule{0.55ex}{0.55ex}}}
 \newcommand{\pipe}{~\textbar~}
 \newcommand{\rolelabel}[1]{\textit{#1}}  % role / position label style
+\newcommand{\projhead}{\textcolor{cvgrey}{\small\itshape Research Projects:}} % sub-heading for projects under a position
+\newcommand{\roleline}[1]{{\noindent\ignorespaces#1\par}} % position line, flush-left (like \posline)
+\newcommand{\loc}[1]{\textcolor{cvlink}{#1}} % location label (duty station), bordeaux red accent
+\newcommand{\fundtag}{\hfill\textcolor{cvgrey}{\textit{(Fully funded scholarship)}}} % degree funding note, right-aligned
 
 % dash bullet list (employment achievements)
 \newlist{dashlist}{itemize}{1}
-\setlist[dashlist]{leftmargin=1.5em,labelsep=0.5em,topsep=0.5pt,itemsep=0pt,parsep=0pt,label=--}
+\setlist[dashlist]{leftmargin=1.5em,rightmargin=2.2em,labelsep=0.5em,topsep=0.5pt,itemsep=0pt,parsep=0pt,label=--}
 % square bullet list (research, awards, teaching, skills)
 \newlist{sqlist}{itemize}{1}
-\setlist[sqlist]{leftmargin=1.4em,labelsep=0.45em,topsep=0.5pt,itemsep=0.4pt,parsep=0pt,label=\sqbull}
+\setlist[sqlist]{leftmargin=1.4em,rightmargin=2.2em,labelsep=0.45em,topsep=0.5pt,itemsep=0.4pt,parsep=0pt,label=\sqbull}
 
 \begin{document}
 
@@ -63,9 +69,22 @@
 \begin{center}
   {\LARGE\bfseries Jonathan García Fuentes}\\[0.35em]
   Invalidenstraße 42, 10099 Berlin, Germany\\[0.25em]
-  \faEnvelope~\href{mailto:jonathan.garcia@hu-berlin.de}{jonathan.garcia@hu-berlin.de}\qquad
-  \faGithub~\href{https://jonathangarciaf.github.io}{jonathangarciaf.github.io}
+  \faEnvelope~\href{mailto:jonathan.garcia@hu-berlin.de}{\textcolor{cvlink}{jonathan.garcia@hu-berlin.de}}\qquad
+  \faGithub~\href{https://jonathangarciaf.github.io}{\textcolor{cvlink}{jonathangarciaf.github.io}}
 \end{center}
+
+\vspace{4pt}
+Development economist and Ph.D.\ candidate specializing in impact evaluation 
+and the optimization of humanitarian interventions in fragile settings. 
+My research uses machine learning and large-scale RCTs to test program design 
+variations in the DRC and Lebanon. 
+I have over \textbf{10 years} of research and operational experience with a primary 
+focus on quantitative methods. I have led large-scale surveys and targeting 
+exercises in some of the world's largest humanitarian operations, and advised 
+country operations and governments across Nicaragua, Sudan, Mozambique, and 
+the Latin America and Southern Africa regions.
+\vspace{4pt}
+
 
 % ---------------------------------------------------------------- Education
 \section{Education}
@@ -73,96 +92,116 @@
 Doctor of Philosophy (Ph.D.) \textit{Supervisors:} Prof. Tilman Brück, Prof. Harald Grethe, and Prof. Andrea Guariso\par
 \indentdate{Visiting Scholar, Cornell College of Human Ecology -- Prof. John Hoddinott}{Fall 2025}
 \gap
-\eduline{Georg-August-Universität Göttingen, Germany}{October 2020}
+\eduline{Georg-August-Universität Göttingen, Germany}{}
 Master's of Science in Development Economics (M.Sc.). \textit{Specialization:} Quantitative Economics.\par
 \gap
-\eduline{Università degli Studi di Torino, Italy}{February 2019}
+\eduline{Università degli Studi di Torino, Italy}{}
 Master's in Applied Labour Economics for Development (M.S.)\par
 \gap
-\eduline{Universidad Centroamericana (UCA), Nicaragua}{May 2013}
+\eduline{Universidad Centroamericana (UCA), Nicaragua}{}
 Bachelor of Science in Applied Economics (B.Sc.). \textit{Minor:} Economic \& Territorial Development.\par
+
+\vspace{4pt}
 
 % ---------------------------------------------------------------- Employment
 \section{Employment}
-\orgline{Zero Hunger Lab (IGZ \& Humboldt University)}{July 2023 -- present}
-\indentline{\rolelabel{Research Fellow:} Economic Development and Food Security Research Group - IGZ}
+\orgline{Zero Hunger Lab (IGZ \& Humboldt University of Berlin)}{July 2023 -- present}
+\roleline{\rolelabel{Research Fellow:} Economic Development and Food Security Research Group - IGZ}
+\indentline{\projhead}
 \begin{dashlist}
-  \item Impact Evaluation (cRCT): Testing Targeting Variants for Humanitarian Food Assistance in DRC. \textit{Collaboration with WFP-Office of Evaluation (OEV) and WB's DIME.} \todolink{Report}
+  \item Impact Evaluation (cRCT): Community-based vs. data-driven targeting --- Experimental evidence from the DRC. \textit{Collaboration with WFP-Office of Evaluation (OEV) and WB's DIME.} \todolink{REPORT}
   \item Beneficiaries' preferences for food assistance. \textit{Collaboration with WFP-OEV.}
   \item Horticulture Policy and Food Security (Systematic Review).
+  \item Political and interpersonal violence against children and youth in Africa. \textit{Research Assistant to Prof. Tilman Br\"uck.}
 \end{dashlist}
 \gap
 \orgline{International Security and Development Center (ISDC)}{November 2023 -- present}
-\indentline{\rolelabel{Research Affiliate:} Impact Evaluation (RCT): Retargeting Humanitarian Food Assistance in Lebanon: A Nation-Wide Experiment. Collaboration with \textit{WFP-OEV} and \textit{WFP-CO Lebanon}. \todolink{Report}}
+\roleline{\rolelabel{Research Affiliate:} Welfare Program}
+\indentline{\projhead}
+\begin{dashlist}
+  \item Impact Evaluation (RCT): Targeting Humanitarian Aid in Crisis --- Evidence from the reduction of WFP Assistance in Lebanon. \textit{Collaboration with WFP-OEV and WFP-CO Lebanon.} \link{https://docs.wfp.org/api/documents/WFP-0000173970/download/}{REPORT}
+\end{dashlist}
 \gap
 \orgline{Collaboration for International Development Economics Research (Cornell University)}{May 2025 -- present}
-\indentline{\rolelabel{Research Fellow}: STARS Program}
+\roleline{\rolelabel{Research Fellow}: STARS Program}
 \gap
 \orgline{United Nations World Institute for Development Economics Research (UNU-WIDER)}{April -- June 2025}
-\indentline{\rolelabel{Research (PhD) Fellow:} Project, Optimizing Transfer Value in DRC: Household and Community Impact.}
+\roleline{\rolelabel{Research (PhD) Fellow:} Project: Optimizing Transfer Value in DRC --- Household and Community Impact.}
 \gap
-\orgline{United Nations World Food Program (WFP)}{October 2020 -- July 2023}
-\posline{\textit{Regional Bureau for Southern Africa}\pipe\rolelabel{Regional Targeting \& Research Officer}}{June 2021 -- June 2023}
+\orgline{United Nations World Food Programme (WFP)}{October 2020 -- July 2023}
+\posline{\loc{Regional Bureau for Southern Africa}\pipe\rolelabel{Regional Targeting \& Research Officer}}{June 2021 -- June 2023}
 \begin{dashlist}
   \item Targeting and Assessment Advisor for \textbf{12 countries} (including DRC, Mozambique, Madagascar, Malawi, Zimbabwe, Lesotho, Tanzania, Angola), to reach \textbf{17 million} beneficiaries in the region.
+  \item Led a \textbf{USD\$100,000} innovation grant for an AI model for drought prediction (precipitation, soil moisture, basin levels) for Anticipatory Action in Mozambique and Zimbabwe (\textit{with ESA and Oxford Earth Observation, OxEO}).
+  \item WFP lead for the training and development of AI models for flood impact prediction during the 2022 KwaZulu-Natal floods in South Africa (\textit{with the WFP Innovation Accelerator and Google Accelerator}).
   \item Led a multi-country impact evaluation (Rapid Rural Transformation) in Madagascar, Mozambique, and DRC.
-  \item Co-coordinator of the Regional Urban Preparedness project (RUP, \textbf{\euro{}1 million}, financed by ECHO).
-  \item Innovation focal, managing a \textbf{USD\$100,000} innovation fund with a focus on Earth Observation and AI.
+  \item Co-led the Regional Urban Preparedness (RUP) project, a \textbf{\euro{}1 million} ECHO-funded initiative.
 \end{dashlist}
-\posline{\textit{Cabo Delgado, Mozambique}\pipe\rolelabel{Vulnerability-Based Targeting Coordinator}}{August -- November 2021}
+\posline{\loc{Cabo Delgado, Mozambique}\pipe\rolelabel{Vulnerability-Based Targeting Coordinator}}{August -- November 2021}
 \begin{dashlist}
   \item Designed and coordinated the first population registry and targeting system for \textbf{1.6 million} IDPs and host families.
 \end{dashlist}
-\posline{\textit{Sudan}\pipe\rolelabel{Profiling, Targeting \& Studies Coordinator}}{October 2020 -- June 2021}
+\posline{\loc{Sudan}\pipe\rolelabel{Profiling, Targeting \& Studies Coordinator}}{October 2020 -- June 2021}
 \begin{dashlist}
-  \item Design and implement assessments and targeting systems for WFP's \textbf{6 million} people operation.
+  \item Designed and implemented assessments and targeting systems for WFP's \textbf{6 million} people operation.
 \end{dashlist}
 \gap
 \orgline{Leibniz Universität Hannover \& German Institute for Economic Research (DIW)}{June -- October 2020}
-\indentline{\rolelabel{Research Assistant:} RCT - ``Financial Education, Mobile Money, and Small-scale Entrepreneurs in Uganda.''}
+\roleline{\rolelabel{Research Assistant:} RCT - ``Financial Education, Mobile Money, and Small-scale Entrepreneurs in Uganda.''}
 \gap
 \orgline{Centre for Modern Indian Studies (CeMIS)}{January 2019 -- September 2020}
-\indentdate{\rolelabel{Research Assistant:} RCTs, quasi-experiments, and descriptive studies.}{January 2019 -- September 2020}
-\indentdate{\rolelabel{Field Coordinator:} Impact evaluation of a new hospital. N=12,000 patient exit survey.}{September - October 2019}
+\roleline{\rolelabel{Research Assistant to Prof. Sebastian Vollmer:} RCTs, quasi-experiments, and descriptive studies.}
+\roleline{UNICEF-commissioned research on adolescent and maternal pregnancy and childhood diseases in West \& Central Africa. \textit{Co-author:} \link{https://doi.org/10.7189/jogh.11.13001}{PAPER 1}, \link{https://doi.org/10.7189/jogh.11.13002}{PAPER 2}; \textit{Research Assistant:} \link{https://jogh.org/documents/2021/jogh-11-13010.pdf}{PAPER 3}, \link{https://jogh.org/documents/2021/jogh-11-13009.pdf}{PAPER 4}.}
+\roleline{\rolelabel{Field Coordinator:} Impact evaluation of a new general hospital. N=12,000 patient exit survey.}
 \gap
-\orgline{United Nations World Food Program (WFP)}{April 2019 -- September 2018}
-\posline{\textit{Mozambique}\pipe\rolelabel{RAM Officer}}{December 2016 - June 2017}
+\orgline{United Nations World Food Programme (WFP)}{April 2019 -- September 2018}
+\posline{\loc{Mozambique}\pipe\rolelabel{RAM Officer}}{December 2016 - June 2017}
 \begin{dashlist}
-  \item Designed and implemented a monitoring system for a 1 million beneficiary emergency operations and led WFP's contribution to the first National Nutrition Survey (\textbf{3,000 HH}) and IPC Acute Malnutrition.
+  \item Designed and implemented a monitoring system for a \textbf{1 million} beneficiary emergency operation and led WFP's contribution to the first National Nutrition Survey (\textbf{3,000 households}) and IPC Acute Malnutrition.
 \end{dashlist}
-\posline{\textit{Regional Bureau for Latin America}\pipe\rolelabel{RAM Officer}}{April -- December 2016}
+\posline{\loc{Regional Bureau for Latin America}\pipe\rolelabel{RAM Officer}}{April -- December 2016}
 \begin{dashlist}
-  \item Market assessments and price monitoring advisor for the region; Data manager post-earthquake food security assessment Ecuador.
+  \item Market assessments and price monitoring advisor; Data manager post-earthquake food security assessment in Ecuador.
 \end{dashlist}
-\posline{\textit{Nicaragua}\pipe\rolelabel{Research, Assessment, and Monitoring (RAM) Associate}}{April 2014 -- September 2018}
+\posline{\loc{Nicaragua}\pipe\rolelabel{Research, Assessment, and Monitoring (RAM) Associate}}{April 2014 -- September 2018}
 \begin{dashlist}
-  \item Support monitoring, market and impact assessments, and price monitoring for WFP's operation in Nicaragua.
+  \item Supported monitoring, market and impact assessments, and price monitoring for WFP's operation in Nicaragua.
 \end{dashlist}
 \gap
 \orgline{Consultants for Development S.A. (COPADES)}{November 2012 - December 2013}
-\indentline{\rolelabel{Junior Economist:} advising the input-output matrix base 2012 (Nicaragua's Central Bank), tax reform 2012 (National Council of Private Enterprise), and social security reform 2013 (National Institute of Pensions and Social Security).}
+\indentline{\rolelabel{Junior Economist:} advised on the 2012 base-year input--output matrix (Nicaragua's Central Bank), the 2012 tax reform (National Council of Private Enterprise), and the 2013 social security reform (National Institute of Pensions and Social Security).}
 \gap
-\textbf{Research and Development Institute NITLAPAN,} \rolelabel{Research Assistant}\hfill\textbf{\dt{September - November 2012}}\par
-\textbf{TECHO,} \rolelabel{Analysis \& Data Coordinator} \textit{``Census of Slums in the Pacific of Nicaragua.''} \todolink{Link}\hfill\textbf{\dt{January - November 2012}}\par
+{\orgnamefmt NITLAPAN Research \& Development Institute}\pipe\rolelabel{Research Assistant}\hfill\textbf{\dt{September -- November 2012}}\par
+{\orgnamefmt TECHO}\pipe\rolelabel{Data \& Analysis Coordinator:} \textit{Census of Slums in the Pacific of Nicaragua} \link{https://nicaragua.unfpa.org/sites/default/files/pub-pdf/Informe-Pac\%C3\%ADfico-Final-24.04.2015-1.pdf}{REPORT}\hfill\textbf{\dt{January -- November 2012}}\par
 
+\vspace{4pt}
 % ---------------------------------------------------------------- Research
 \section{Research}
-\textbf{PhD Dissertation}\par
-\begin{sqlist}
-  \item Testing Targeting Variants for Emergency Transfers. Statistical- vs. Community-based Targeting in Eastern DRC. \textit{Joint work with Andrea Guariso, Felipe Dunsh, Marcus Holmlund, Jonas Heirman, and Kristen McCollum.} \todolink{Draft}.
-  \item When Humanitarian Assistance Fades Out: Experimental Evidence from a Nation-Wide Program in Lebanon. \textit{Joint work with Ghassan Baliki, Felipe Dunsh, and Andrea Guariso.} \todolink{Draft}
-  \item Optimizing Transfer Value in DRC. \textit{Joint work with Aysha Twose}
-  \item Beneficiaries' Preferences for Humanitarian Food Assistance Design. Three Discrete Choice Experiments in DRC.
+\textbf{PhD Dissertation:} \textit{Optimizing Food Security Interventions in Fragile Settings}\par
+\begin{sqlist}[itemsep=8pt]
+  \item Machine Learning versus Community-based Targeting: Experimental Evidence from the DRC. \textit{Joint work with Felipe A. Dunsch, Andrea Guariso, Jonas Heirman, Marcus Holmlund, and Kristen McCollum.} \todolink{\underline{DRAFT}} \link{https://wfp-evaluation.medium.com/optimizing-targeting-of-humanitarian-food-assistance-in-the-drc-precision-and-coverage-29c6d39d2ee9}{\underline{BLOG}} \link{https://www.povertyactionlab.org/blog/7-21-25/evidence-effect-evidence-action-conflict-and-crisis}{\underline{MEDIA}}
+  \item Optimizing Transfer Value in Humanitarian Food Assistance: Welfare and Community Impacts from the DRC. \textit{Joint work with Aysha Twose.} \todolink{DRAFT}
+  \item When Humanitarian Assistance Fades Out: Experimental Evidence from a Nation-Wide Program in Lebanon. \textit{Joint work with Ghassan Baliki, Felipe A. Dunsch, Andrea Guariso, and Jonas Heirman.} \todolink{DRAFT}
+  \item Targeting the Phase Out of Humanitarian Food Assistance: Experts, Data, or Impact? \textit{Joint work with Felipe A. Dunsch and Jonas Heirman.} \todolink{DRAFT}
+  \item Gendered and Intra-household Preferences for Assistance Among Subsistence Farmers in the DRC. \textit{Joint work with Felipe A. Dunsch, Jonas Heirman, and Jennifer Waidler.} \todolink{DRAFT}
+  \item Beneficiaries' Preferences for Humanitarian Food Assistance and Targeting Amidst Aid Cuts: Evidence from DRC and Afghanistan. \textit{Joint work with Felipe A. Dunsch, Jonas Heirman, and Heng Zhu.} \todolink{DRAFT}
 \end{sqlist}
-\textbf{Peer-PhD Work}\par
-\begin{sqlist}
-  \item The Impacts of a New General Hospital on Waiting Time and Out-of-Pocket Expenditure for Outpatient Care. \todolink{Draft}
-  \item Predictors of patients' choice and pathways of access to hospitals under universal health coverage: a case study of the Nicaraguan capital. \textit{BMC Health Services Research} 2021. \link{https://doi.org/10.1186/s12913-021-07333-z}{https://doi.org/10.1186/s12913-021-07333-z}
-  \item Socio-economic predictors of adolescent marriage and maternity in West and Central Africa between 1986 and 2017. \textit{J Glob Health} 2021; \link{https://doi.org/10.7189/jogh.11.13002}{https://doi.org/10.7189/jogh.11.13002}
-  \item Levels and trends of adolescent marriage and maternity in West and Central Africa, 1986-2017. \textit{J Glob Health} 2021; \link{https://doi.org/10.7189/jogh.11.13001}{https://doi.org/10.7189/jogh.11.13001}
-  \item The Gender Pay Gap: Triple penalty? Woman, mother, and informal. Evidence from Nicaragua. \textit{Revista de Economía y Finanzas}, Vol. 8. Central Bank of Nicaragua. \todolink{PDF Spanish} \todolink{Original (English)} \todolink{Code} \todolink{Best paper 2020, BCN}
+\textbf{Work in Progress}\par
+\begin{sqlist}[itemsep=8pt]
+  \item Targeting Food Insecurity at a High Frequency.
+  \item AI versus Communities versus Experts Targeting of Food Assistance.
+  \item Social Protection as Insurance for Conflict.
+\end{sqlist}
+\textbf{Pre-PhD Research}\par
+\begin{sqlist}[itemsep=8pt]
+  \item The Impacts of a New General Hospital on Waiting Time and Out-of-Pocket Expenditure for Outpatient Care. \todolink{DRAFT}
+  \item Predictors of patients' choice and pathways of access to hospitals under universal health coverage: a case study of the Nicaraguan capital. \textit{BMC Health Services Research} 2021. \link{https://doi.org/10.1186/s12913-021-07333-z}{10.1186/s12913-021-07333-z}
+  \item Socio-economic predictors of adolescent marriage and maternity in West and Central Africa between 1986 and 2017. \textit{J Glob Health} 2021. \link{https://doi.org/10.7189/jogh.11.13002}{10.7189/jogh.11.13002}
+  \item Levels and trends of adolescent marriage and maternity in West and Central Africa, 1986-2017. \textit{J Glob Health} 2021. \link{https://doi.org/10.7189/jogh.11.13001}{10.7189/jogh.11.13001}
+  \item The Gender Pay Gap: Triple penalty? Woman, mother, and informal. Evidence from Nicaragua. \textit{Revista de Economía y Finanzas}, Vol. 8. Central Bank of Nicaragua. \todolink{\underline{PDF Spanish}} \todolink{\underline{Original (English)}} \todolink{\underline{Code}} \todolink{\underline{Best Paper 2020}}
 \end{sqlist}
 
+\newpage
 % ---------------------------------------------------------------- Awards
 \section{Fellowships, Scholarships \& Awards}
 \begin{sqlist}
@@ -170,7 +209,7 @@ Bachelor of Science in Applied Economics (B.Sc.). \textit{Minor:} Economic \& Te
   \item WFP's Innovation Award for developing a drought forecast model for Southern Africa. US\$100,000\hfill\dt{2021}
   \item Economy, Finance, and Development Award. 1\textsuperscript{st} place, research award. Nicaragua's Central Bank. US\$4,000\hfill\dt{2020}
   \item DAAD-EPOS Programme Scholarship for Graduate Studies in Development Economics. \euro{}35,000.\hfill\dt{2018}
-  \item MALED Scholarship for Graduate Studies in Labor Economics by ILO and University of Turin. \euro{}7,000.\hfill\dt{2017}
+  \item MALED Scholarship for Graduate Studies in Labour Economics by ILO and University of Turin. \euro{}7,000.\hfill\dt{2017}
   \item Academic Excellence Award, Universidad Centroamericana, Applied Economics. 2013.\hfill\dt{2013}
   \item Young Researchers, Universidad Centroamericana - Nicaragua. 3\textsuperscript{rd} place.\hfill\dt{2012}
   \item Scholarship for Undergraduate Studies in Applied Economics, 2009-2013. Universidad Centroamericana.\hfill\dt{2009}
@@ -195,27 +234,29 @@ Bachelor of Science in Applied Economics (B.Sc.). \textit{Minor:} Economic \& Te
 
 % ---------------------------------------------------------------- Talks
 \section{Conferences, Lectures \& Invited Talks}
-\textbf{2025} WIDER Conference (\textit{UNU-WIDER}); CSAE 2025 (\textit{Oxford University}); LEADS (Bremen).\par
-\textbf{2024} Leibniz Research Network CrisEn (Berlin); German Economic Association (VfS).\par
-\textit{Panelist:} -Forgotten Conflicts, join with Prof. Martin Gassebner, and Prof. Anna Minasyan (\textit{U. of Göttingen}); Food Security and Conflicts, with Johan Swinnen, Lukas Kornher, and Bettina Rudlof. IAMO Forum, (\textit{Halle}).\par
-\textbf{2023} \textit{Panelist:} Are we on track Zero Hunger? with Prof. Meike Wollni and Margherita Squarcina (\textit{U of Göttingen}); \textit{Invited lecture:} Poverty and food insecurity measurement and targeting (\textit{Technische Universität München})\par
-\textbf{2022-2019} \textit{Panelist:} Evidence and evaluation in humanitarian contexts (\textit{SAMEA, Johannesburg}); \textit{Invited lecturer:} Targeting the ultra-poor; Measuring food insecurity (\textit{Technische Universität München}); DAAD annual meeting (\textit{Universität Hamburg}).\par
+\textbf{2026:} CSAE (\textit{Oxford}); German Development Economics Conference; EDEG (\textit{Kiel}); Fragile Lives (\textit{Berlin}).\par
+\textbf{2025:} WIDER Conference (\textit{UNU-WIDER}); CSAE (\textit{Oxford}); LEADS (Bremen).\par
+\textbf{2024:} Leibniz Research Network CrisEn (Berlin); German Economic Association (VfS).\par
+\textit{Panelist:} Forgotten Conflicts, jointly with Prof. Martin Gassebner and Prof. Anna Minasyan (\textit{U. of Göttingen}); Food Security and Conflicts, with Johan Swinnen, Lukas Kornher, and Bettina Rudlof. IAMO Forum (\textit{Halle}).\par
+\textbf{2023:} \textit{Panelist:} Are we on track for Zero Hunger? with Prof. Meike Wollni and Margherita Squarcina (\textit{U of Göttingen}); \textit{Invited lecture:} Poverty and food insecurity measurement and targeting (\textit{Technische Universität München}).\par
+\textbf{2022--2019:} \textit{Panelist:} Evidence and evaluation in humanitarian contexts (\textit{SAMEA, Johannesburg}); \textit{Invited lecturer:} Targeting the ultra-poor; Measuring food insecurity (\textit{Technische Universität München}); DAAD annual meeting (\textit{Universität Hamburg}).\par
 
 % ---------------------------------------------------------------- Skills
 \section{Technical Skills}
 \textbf{Software \& Programming}\par
-\begin{sqlist}
-  \item \textit{Stats./GIS/Data Vis.:} STATA, R, Ngene, Gi, ArcGIS, TABLEAU.~\sqbull~\textit{Survey:} ODK, SurveyCTO~\sqbull~\textit{Text:} LaTeX, M. Office.
-\end{sqlist}
+\indentline{\textit{Stats./GIS/Data Vis.:} STATA, R, Python, Ngene, Gi, ArcGIS, TABLEAU.}
+\indentline{\textit{AI/LLMs:} Claude, Codex.}
+\indentline{\textit{Survey:} ODK, SurveyCTO.}
+\indentline{\textit{Text:} LaTeX, M. Office.}
 \textbf{Languages}\par
-\begin{sqlist}
-  \item \textit{Native:} Spanish~\sqbull~\textit{Fluent:} English, Portuguese, and Italian.~\sqbull~\textit{Intermediate:} German (B1) and French (B1).
-\end{sqlist}
+\indentline{\textit{Native:} Spanish.}
+\indentline{\textit{Fluent:} English, Portuguese, and Italian.}
+\indentline{\textit{Intermediate:} German (B1) and French (B1).}
 
 \vfill
 \begin{center}
   {\color{cvgrey}\rule{4em}{0.4pt}}\\[0.25em]
-  \textcolor{cvgrey}{Updated: February 2026}
+  \textcolor{cvgrey}{Updated: May 2026}
 \end{center}
 
 \end{document}
