@@ -105,6 +105,8 @@ p { margin: 0 0 1rem; }
 /* ---------- Publications / research ---------- */
 .publication { margin-bottom: 1.9rem; line-height: 1.55; }
 .publication .title { font-weight: 700; }
+.publication .title a { color: var(--text); text-decoration: none; }
+.publication .title a:hover { color: var(--crimson); text-decoration: underline; }
 .publication .meta { color: var(--text); }
 .pub-status {
   display: inline-block;
