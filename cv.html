@@ -34,14 +34,19 @@
     </a>
   </p>
 
-  <!-- The CV embeds files/cv.pdf. Until that file is added, the fallback message shows. -->
+  <!-- The CV embeds files/cv.pdf inline; the link below always works as a fallback. -->
   <div class="embed-container">
-    <object data="files/cv.pdf" type="application/pdf">
+    <iframe src="files/cv.pdf#view=FitH" title="Curriculum Vitæ (PDF)" loading="lazy">
       <div class="cv-fallback">
-        CV PDF not added yet — drop your file in <code>files/cv.pdf</code> and it will appear here.
+        Your browser can't display the PDF inline.
+        <a href="files/cv.pdf" target="_blank" rel="noopener">Open the CV in a new tab</a>.
       </div>
-    </object>
+    </iframe>
   </div>
+  <p class="cv-fallback-link">
+    Can't see the CV above?
+    <a href="files/cv.pdf" target="_blank" rel="noopener">Open it in a new tab</a>.
+  </p>
 
 </main>
 

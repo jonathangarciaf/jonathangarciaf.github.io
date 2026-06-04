@@ -157,6 +157,9 @@ p { margin: 0 0 1rem; }
   border: 1px solid var(--border); color: var(--muted);
   background: #f8f9fa;
 }
+.cv-fallback-link {
+  margin-top: 0.9rem; color: var(--muted); font-size: 0.95rem;
+}
 
 /* ---------- Footer ---------- */
 .footer {
