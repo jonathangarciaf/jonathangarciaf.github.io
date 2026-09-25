@@ -16,6 +16,8 @@ Plain HTML/CSS — no build step. Just edit the files and push.
 | `cv.html` | CV — download button + embedded PDF |
 | `styles.css` | Shared styling (Harvard-crimson accent, Alegreya Sans) |
 | `files/` | Put your CV here as `cv.pdf` |
+| `files/papers/` | Paper drafts linked from the CV (public, but not linked from site pages; excluded via `robots.txt`) |
+| `cv-source/` | LaTeX CV sources (`cv.tex` → `files/cv.pdf`; `CV_IE.tex` tailored version) |
 | `img/` | Put your profile photo here as `profile.jpg` |
 
 ## Editing
