@@ -176,7 +176,6 @@ p { margin: 0 0 1rem; }
 .series-card:hover { text-decoration: none; color: var(--crimson); }
 .series-card:hover img { opacity: .85; }
 .series-card span { display: block; margin-top: .5rem; font-weight: 700; }
-.series-card small { font-weight: 400; color: var(--muted); margin-left: .4rem; }
 .photo-back { display: inline-block; font-size: 1rem; margin-bottom: .8rem; }
 .series-nav {
   display: flex; flex-wrap: wrap; gap: .3rem 1.2rem;

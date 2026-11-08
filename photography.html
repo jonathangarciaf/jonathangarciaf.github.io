@@ -70,7 +70,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
         const cover = s.cover || s.photos[0].src;
         return `<a class="series-card" href="#${esc(s.id)}">
           <img src="${esc(cover)}" alt="${esc(s.title)}" loading="lazy">
-          <span>${esc(s.title)} <small>${s.photos.length} photo${s.photos.length > 1 ? "s" : ""}</small></span>
+          <span>${esc(s.title)}</span>
         </a>`;
       }).join("") + "</div>";
   }
