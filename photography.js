@@ -18,7 +18,7 @@ const PHOTO_SERIES = [
     id: "sudan",
     title: "Sudan",
     intro: "",
-    cover: "",
+    cover: "img/photography/web/sudan/29-natural-b.jpg",
     photos: [
       { src: "img/photography/web/sudan/01-bw-b.jpg", caption: "" },
       { src: "img/photography/web/sudan/04-natural-b.jpg", caption: "" },
@@ -41,7 +41,7 @@ const PHOTO_SERIES = [
     id: "cabo-delgado",
     title: "Cabo Delgado, Mozambique",
     intro: "",
-    cover: "",
+    cover: "img/photography/web/cabo-delgado/42-warm.jpg",
     photos: [
       { src: "img/photography/web/cabo-delgado/40-bw-a.jpg", caption: "" },
       { src: "img/photography/web/cabo-delgado/42-warm.jpg", caption: "" },
@@ -53,12 +53,13 @@ const PHOTO_SERIES = [
     ],
   },
   {
-    id: "madagascar",
-    title: "Madagascar",
-    intro: "",
-    cover: "",
+    id: "mix",
+    title: "Mix",
+    intro: "Angola and Madagascar",
+    cover: "img/photography/web/mix/74-bw-a.jpg",
     photos: [
-
+      { src: "img/photography/web/mix/73-bw-a.jpg", caption: "" },
+      { src: "img/photography/web/mix/74-bw-a.jpg", caption: "" },
     ],
   },
 ];
