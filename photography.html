@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photography — Jonathan García Fuentes</title>
+<meta name="description" content="Photography by Jonathan García Fuentes.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a class="navbar-brand" href="index.html">Jonathan García Fuentes</a>
+  <div class="navbar-nav">
+    <a href="research.html">Research</a>
+    <a href="cv.html">CV</a>
+    <a href="photography.html" class="active">Photography</a>
+  </div>
+</nav>
+
+<main class="container photo-page">
+  <!-- Content is generated from photography.js — edit that file to add photos. -->
+  <div id="photo-root"></div>
+</main>
+
+<div id="lightbox" class="lightbox" hidden>
+  <button class="lb-btn lb-close" aria-label="Close">&times;</button>
+  <button class="lb-btn lb-prev" aria-label="Previous">&#8249;</button>
+  <figure>
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button class="lb-btn lb-next" aria-label="Next">&#8250;</button>
+</div>
+
+<footer class="footer">
+  <span>&copy; <span id="year"></span> Jonathan García Fuentes</span>
+  <span>
+    <a href="mailto:jonathan.garcia@hu-berlin.de">Contact</a> &nbsp;|&nbsp;
+    <a href="https://github.com/jonathangarciaf/jonathangarciaf.github.io" target="_blank" rel="noopener">Source on GitHub</a>
+  </span>
+</footer>
+
+<script src="photography.js"></script>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
+(function () {
+  const root = document.getElementById("photo-root");
+  const series = (typeof PHOTO_SERIES !== "undefined" ? PHOTO_SERIES : [])
+    .filter(s => s.photos && s.photos.length);
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+  function seriesNav(current) {
+    if (series.length < 2) return "";
+    return '<nav class="series-nav">' + series.map(s =>
+      `<a href="#${esc(s.id)}"${s.id === current ? ' class="active"' : ""}>${esc(s.title)}</a>`
+    ).join("") + "</nav>";
+  }
+
+  function renderIndex() {
+    document.title = "Photography — Jonathan García Fuentes";
+    if (!series.length) {
+      root.innerHTML = '<h1 class="page-title">Photography</h1><p class="photo-empty">Photos coming soon.</p>';
+      return;
+    }
+    root.innerHTML = '<h1 class="page-title">Photography</h1><div class="series-grid">' +
+      series.map(s => {
+        const cover = s.cover || s.photos[0].src;
+        return `<a class="series-card" href="#${esc(s.id)}">
+          <img src="${esc(cover)}" alt="${esc(s.title)}" loading="lazy">
+          <span>${esc(s.title)} <small>${s.photos.length} photo${s.photos.length > 1 ? "s" : ""}</small></span>
+        </a>`;
+      }).join("") + "</div>";
+  }
+
+  function renderSeries(s) {
+    document.title = s.title + " — Photography — Jonathan García Fuentes";
+    root.innerHTML =
+      '<a class="photo-back" href="photography.html">&larr; All series</a>' +
+      seriesNav(s.id) +
+      `<h1 class="page-title">${esc(s.title)}</h1>` +
+      (s.intro ? `<p class="series-intro">${s.intro}</p>` : "") +
+      '<div class="photo-stream">' +
+      s.photos.map((p, i) => `<figure class="photo">
+          <img src="${esc(p.src)}" alt="${esc((p.caption || s.title).replace(/<[^>]+>/g, ""))}" loading="lazy" data-i="${i}">
+          ${p.caption ? `<figcaption>${p.caption}</figcaption>` : ""}
+        </figure>`).join("") +
+      "</div>";
+    root.querySelectorAll(".photo img").forEach(img =>
+      img.addEventListener("click", () => openLightbox(s, +img.dataset.i)));
+  }
+
+  function route() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const s = series.find(x => x.id === id);
+    s ? renderSeries(s) : renderIndex();
+    window.scrollTo(0, 0);
+  }
+
+  // ---------- Lightbox ----------
+  const lb = document.getElementById("lightbox");
+  const lbImg = lb.querySelector("img"), lbCap = lb.querySelector("figcaption");
+  let cur = null, idx = 0;
+  function show() {
+    const p = cur.photos[idx];
+    lbImg.src = p.src; lbImg.alt = (p.caption || "").replace(/<[^>]+>/g, "");
+    lbCap.innerHTML = p.caption || "";
+  }
+  function openLightbox(s, i) { cur = s; idx = i; show(); lb.hidden = false; document.body.style.overflow = "hidden"; }
+  function close() { lb.hidden = true; document.body.style.overflow = ""; }
+  function step(d) { idx = (idx + d + cur.photos.length) % cur.photos.length; show(); }
+  lb.querySelector(".lb-close").onclick = close;
+  lb.querySelector(".lb-prev").onclick = e => { e.stopPropagation(); step(-1); };
+  lb.querySelector(".lb-next").onclick = e => { e.stopPropagation(); step(1); };
+  lb.addEventListener("click", e => { if (e.target === lb || e.target.tagName === "FIGURE") close(); });
+  document.addEventListener("keydown", e => {
+    if (lb.hidden) return;
+    if (e.key === "Escape") close();
+    if (e.key === "ArrowLeft") step(-1);
+    if (e.key === "ArrowRight") step(1);
+  });
+
+  window.addEventListener("hashchange", route);
+  route();
+})();
+</script>
+</body>
+</html>

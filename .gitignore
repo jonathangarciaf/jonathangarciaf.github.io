@@ -8,3 +8,9 @@
 *.log
 *.out
 *.synctex.gz
+
+# Photography working files (full-res originals with metadata, review edits) — keep private.
+# Only web-ready exports in img/photography/web/ are published.
+img/photography/*
+!img/photography/README.md
+!img/photography/web/
