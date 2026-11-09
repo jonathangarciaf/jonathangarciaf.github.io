@@ -14,16 +14,19 @@ Plain HTML/CSS — no build step. Just edit the files and push.
 | `index.html` | Home / bio |
 | `research.html` | Research — work in progress & publications |
 | `cv.html` | CV — download button + embedded PDF |
+| `photography.html` | Photography — albums with lightbox; content in `photography.js` |
 | `styles.css` | Shared styling (Harvard-crimson accent, Alegreya Sans) |
 | `files/` | Put your CV here as `cv.pdf` |
 | `files/papers/` | Paper drafts linked from the CV (public, but not linked from site pages; excluded via `robots.txt`) |
 | `cv-source/` | LaTeX CV sources (`cv.tex` → `files/cv.pdf`; `CV_IE.tex` tailored version) |
 | `img/` | Put your profile photo here as `profile.jpg` |
+| `img/photography/web/` | Published photo exports (everything else in `img/photography/` is private and git-ignored) |
 
 ## Editing
 
 - **Bio, affiliations, fellowships:** edit `index.html`.
 - **Papers:** duplicate a `<div class="publication">` block in `research.html`.
+- **Photography:** export images to `img/photography/web/<album>/` and list them (captions, cover) in `photography.js`.
 - **CV:** drop `files/cv.pdf` in place and update the "Last updated" date in `cv.html`.
 - **Social links:** uncomment the Google Scholar / LinkedIn / Twitter links in
   `index.html` and add your URLs.

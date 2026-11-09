@@ -10,6 +10,9 @@
 - [ ] [2026-09-25] Update PhD expected date to October 2026 in `cv-wfp-epr.tex` and Dropbox practitioner `cv.tex`
 - [ ] [2026-10-02] Update Lebanon paper title ("When Humanitarian Assistance Fades ... Nationwide") and co-authors (add Micah Cruz, Dorothee Weiffen) in `cv-source/cv.tex`, `research.html`, `cv-wfp-epr.tex`; rebuild `files/cv.pdf`
 - [ ] [2026-10-02] Check whether `Drafts/DCE_Humanitarian_20260911_DRAFT.pdf` is newer than hosted `files/papers/drc-afg-dce-humanitarian.pdf` (sizes differ)
+- [ ] [2026-11-08] Add captions (place, country, year) to published photos in `photography.js`
+- [ ] [2026-11-08] Split Mix album (72–74) into Angola vs Madagascar per photo once identified
+- [ ] [2026-11-08] Decide on undecided photos 02, 10, 65, 66, 67 and versions for 73/74 (defaulted to B&W 1)
 
 ## Papers
 
