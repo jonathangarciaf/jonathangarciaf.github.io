@@ -45,7 +45,6 @@ const PHOTO_SERIES = [
     photos: [
       { src: "img/photography/web/cabo-delgado/40-bw-a.jpg", caption: "" },
       { src: "img/photography/web/cabo-delgado/42-warm.jpg", caption: "" },
-      { src: "img/photography/web/cabo-delgado/43-bw-a.jpg", caption: "" },
       { src: "img/photography/web/cabo-delgado/52-warm.jpg", caption: "" },
       { src: "img/photography/web/cabo-delgado/54-bw-a.jpg", caption: "" },
       { src: "img/photography/web/cabo-delgado/58-natural-b.jpg", caption: "" },
