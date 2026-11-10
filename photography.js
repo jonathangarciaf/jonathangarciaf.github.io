@@ -53,10 +53,14 @@ const PHOTO_SERIES = [
   },
   {
     id: "mix",
-    title: "Mix",
+    title: "Various",
     intro: "Angola and Madagascar",
     cover: "img/photography/web/mix/74-bw-a.jpg",
     photos: [
+      { src: "img/photography/web/mix/64-bw-a.jpg", caption: "" },
+      { src: "img/photography/web/mix/65-bw-a.jpg", caption: "" },
+      { src: "img/photography/web/mix/66-bw-a.jpg", caption: "" },
+      { src: "img/photography/web/mix/67-bw-a.jpg", caption: "" },
       { src: "img/photography/web/mix/73-bw-a.jpg", caption: "" },
       { src: "img/photography/web/mix/74-bw-a.jpg", caption: "" },
     ],
